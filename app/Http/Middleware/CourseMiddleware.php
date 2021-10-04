@@ -23,7 +23,7 @@ class CourseMiddleware
             'coursename' => ['required', 'string', 'max:50'],
             'start_day' => ['required'], 'start_month' => ['required'], 'start_year' => ['required'],
             'end_day' => ['required'], 'end_month' => ['required'], 'end_year' => ['required'],
-            'courseinfo' => ['required', 'string', 'max:255']
+            'courseinfo' => ['required', 'string', 'max:100']
         ]);
         return $next($request);
     }

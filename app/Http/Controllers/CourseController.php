@@ -30,6 +30,7 @@ class CourseController extends Controller
     function add(Request $req)
     {
 
+
         course::create([
             'course_id' => strtoupper($req->courseid),
             'course_name' => strtoupper($req->coursename),
@@ -88,7 +89,7 @@ class CourseController extends Controller
         $Endyear = $End[2];
 
         return view('CourseFolder.UpdateCourseView', ['course_id' => $courseid, 'course_name' => $coursename, 'Endmonth' => $Endmonth,
-            'Endday' => $Endday, 'Endyear' => $Endyear, 'startmonth' => $startmonth, 'startday' => $startday, 'startyear' => $startyear, 
+            'Endday' => $Endday, 'Endyear' => $Endyear, 'startmonth' => $startmonth, 'startday' => $startday, 'startyear' => $startyear,
             'course_info' => $courseinfo, 'course_cost' => $coursecost, 'course_time' => $coursetime]);
     }
 
@@ -102,8 +103,8 @@ class CourseController extends Controller
                 'course_info' => $req->courseinfo,
                 'course_cost' => $req->coursecost,
         ]);
-        
-               
+
+
         return redirect('viewcourse');
     }
 }

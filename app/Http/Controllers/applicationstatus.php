@@ -22,7 +22,7 @@ class applicationstatus extends Controller
 
     // Admin ViewApplication Methods
     function view_all_applications(){
-        $data = DB::table('applications')->where('response','=',NULL)->get();
+        $data = DB::table('applications')->where('response','=',2)->get();
         return view('admin.ViewAllApplication',['data'=>$data]);
     }
 

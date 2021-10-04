@@ -14,7 +14,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
       rel="stylesheet">
-  
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -166,20 +166,30 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="block mt-4">
+                @error("email")
+                <div class="text-white mt-2 text-sm">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>  <a class="underline text-sm text-white hover:text-gray-900" href="{{ url('/register') }}">
+                {{ __("Don't have an account?") }}
+            </a> <br>
+
                 @if (Route::has('password.request'))
+
                     <a class="underline text-sm text-white hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-
+<br><div class="flex items-center justify-center mt-4">
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
-                </x-jet-button>
-            </div>
+                </x-jet-button></div>
+{{--            </div>--}}
         </form>
 
 
- 
+
 </body>
 </html>

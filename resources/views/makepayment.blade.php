@@ -14,7 +14,7 @@
 
 {{-- error --}}
 {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> --}}
- 
+
     <style>
 
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -283,25 +283,14 @@ th{
 .errormsg{
 color: red;
 }
- 
+
      </style>
 
 </head>
 
 <body class="bg-white font-family-karla">
 	<x-app-layout>
-       
-		{{-- <header class="w-full container mx-auto">
-			<div class="flex flex-col items-center py-12">
-				<p class="font-bold text-gray-800 uppercase text-5xl" href="#">
-					Amber Heart Academy
-				</p>
-				<p class="text-lg text-gray-600">
-					"Where Coding is Life"
-				</p>
-			  </div>
-			  </header> --}}
-		
+
        <div class="w-full bg-blue-800  mx-auto">
        <h1 class="flex flex-col items-center text-white text-2xl py-8">Make Payment</h1>
        </div>
@@ -311,9 +300,9 @@ color: red;
         <x-slot name="logo">
             {{--            <x-jet-authentication-card-logo />--}}
         </x-slot>
-		 
-	
-		
+
+
+
 <div id="wrapper">
 	@if ($errors->any())
 	<div class="alert alert-danger">
@@ -327,19 +316,16 @@ color: red;
 	<div id="container">
 		<div id="left-col">
 			<div id="left-col-cont">
-{{--                 
-				<h2>Summary</h2> --}}
-				{{-- <h1>Course Listing</h1> --}}
-                <table class="tablealign">
+        <table class="tablealign">
                     <th>Course Name</th>
                     <th>Course Cost</th>
-                    
+
                     {{$coursetotal= null}}
-                    @foreach(Session()->get('app_stat') as $course)
-                    
-    
-                    @if ($course->response == '1') 
-                        <tr>                         
+                    @foreach($data as $course)
+
+
+                    @if ($course->response == '1')
+                        <tr>
                             <td>{{$course->student_course}}</td>
                             <td>{{$course->cost}}</td>
                          <?php $coursetotal= $coursetotal+$course->cost?>
@@ -348,7 +334,7 @@ color: red;
 					 @endforeach
                 </table>
 
-                
+
 
 				<p id="total">Total Cost</p>
 				<h4 id="total-price"><span>$</span> {{$coursetotal}}</h4>
@@ -359,14 +345,14 @@ color: red;
 			<div id="logotype">
 				<img id="mastercard" src="http://emilcarlsson.se/assets/MasterCard_Logo.png" alt="" />
 			</div>
-			
+
 			<form action="{{route('makingpayment')}}" method="POST">
 				@csrf
 				<label for="">Cardnumber</label>
-				<div id="cardnumber"> 
+				<div id="cardnumber">
 				    <input name="cardnumber" type="text"  placeholder="0000-0000-0000-0000" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}"/>
 				 </div>
-				
+
 				<label for="">Cardholder</label>
 				<input name="cardholder" id="cardholder" type="text" placeholder="John Doe" />
 
@@ -408,11 +394,11 @@ color: red;
 					<input name="cvc" id="cvc" type="text" placeholder="123" maxlength="3" />
 				</div>
 
-				@if (Session()->get('payment_count')== "nopayment") 
-			
+				@if (Session()->get('payment_count')== "nopayment")
+
 				<button id="purchaseunavailable" name="">Unavailable</button>
 
-				@else 
+				@else
 				<button id="purchase" name="submit">Purchase</button>
 				@endif
 
@@ -421,21 +407,21 @@ color: red;
 				{{-- <x-jet-validation-errors class="mb-4" /> --}}
 
 			</form>
-		
+
 		</div>
 	</div>
-				{{-- <div> 	
+				{{-- <div>
 					@if ($msg = Session::get('failure'))
 						<div class="alert alert-success">
-							
+
 							<strong>{{ $msg }}</strong>
 						</div>
 					@endif
 				</div> --}}
 </div>
     </div>
-	
-            
+
+
 
 
 
@@ -464,7 +450,7 @@ color: red;
                 <!-- <x-jet-button class="ml-4 importar">
                     {{ __('Apply') }}
                 </x-jet-button> -->
-            
+
             </div>
             <br> <x-jet-validation-errors class="mb-4" />
 
@@ -493,13 +479,13 @@ color: red;
 
     @foreach(Session()->get('app_stat') as $course)
 
-    
-    @if ($course->response == '1') 
+
+    @if ($course->response == '1')
         <tr>
             <td>{{$course->student_course}}</td>
             <td>{{$course->cost}}</td>
 
-            @if ($course->response == '1')                         
+            @if ($course->response == '1')
             <td>Approved</td>
             @elseif ($course->response == '0')
             <td>Application Denied</td>
