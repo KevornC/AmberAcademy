@@ -1,4 +1,3 @@
-{{--name was changed to firstname 13/8/2021--}}
 
 <nav x-data="{ open: false }" class="bg-blue-800 border-b border-gray-100">
     <!-- Primary Navigation Menu -->
@@ -14,13 +13,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="/homepage" class="text-white hover:text-white" >
+                    <x-jet-nav-link href="/" class="text-white " >
 {{--                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">--}}
                         {{ __('Home') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="/profile" class="text-white hover:text-white" >
+                    <x-jet-nav-link href="/profile" class="text-white  " >
 {{--                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">--}}
                         {{ __('Admin Profile') }}
                     </x-jet-nav-link>

@@ -79,15 +79,16 @@ class applicationstatus extends Controller
         return redirect('/view');
     }
 
-    function view_denied_applications(){
-        $data = DB::table('applications')->where('response','=','0')->get()->count();
+    function view_denied_applications()
+    {
+        $data = DB::table('applications')->where('response', '=', '0')->get()->count();
 
-        if ($data>0){
-            return view('admin.ViewDeniedApplication',['data'=>$data]);
-        }else{
-            echo "No records Available";
+        if($data > 0) {
+            return view('admin.ViewDeniedApplication', ['data' => $data]);
+        } else {
+            $data = array();
+            return view('admin.ViewDeniedApplication',compact('data'));
         }
-
-            }
+    }
 
 }

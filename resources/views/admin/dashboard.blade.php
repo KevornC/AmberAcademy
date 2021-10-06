@@ -27,9 +27,59 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Administrator Dashboard'.' '.'-'.' '.Auth::user()->Firstname.' '.Auth::user()->lastname) }}
         </h2>
-
     </x-slot>
 </x-admin-layout>
+
+    <!-- Application -->
+    <div class="w-full h-screen bg-gray-100 flex  ">
+        <div class="flex flex-col gap-4 mt-20 mx-auto">
+            <label class="text-gray-800 font-semibold tracking-wider text-lg">Application Tracker</label>
+            <div class="bg-gray-800 rounded-lg w-full h-auto py-4 flex flex-row justify-between divide-x divide-solid divide-gray-400">
+                <div class="relative flex-1 flex flex-col gap-2 px-4">
+                    <label class="text-gray-100 text-center text-base font-semibold tracking-wider">Approved</label>
+{{--                    loop to get tally--}}
+                    <label class="text-white text-center text-4xl font-bold">{{$approve}}</label>
+                </div>
+                <div class="relative flex-1 flex flex-col gap-2 px-4">
+                    <label class="text-gray-100  text-center text-base font-semibold tracking-wider">Application</label>
+                    <label class="text-white text-center text-4xl font-bold">{{$app}}</label>
+
+{{--                   if statement to test if pending should be displayed--}}
+                 <?php
+                 if($app>1)
+                    {
+                   echo '<div class="absolute bg-red-400 rounded-md font-semibold text-xs text-gray-100 p-2 right-4 bottom-0">
+                        pending
+                    </div>';
+                    }
+                    ?>
+
+                </div>
+                <div class="relative flex-1 flex flex-col gap-2 px-4">
+                    <label class="text-gray-100  text-center text-base font-semibold tracking-wider">Total</label>
+                    <label class="text-white text-center text-4xl font-bold">{{$all}}</label>
+                </div>
+            </div>
+        </div>
+        <!-- Course -->
+
+            <div class="flex flex-col gap-4 mt-20  mx-auto">
+            <label class="text-gray-800 font-semibold tracking-wider text-lg">Available Courses</label>
+            <div class="bg-gray-800 rounded-lg w-full h-auto py-4 flex flex-row">
+                <div class="relative flex-1 flex flex-col gap-2 px-4">
+                    <label class="text-gray-100 text-center text-base font-semibold">Total</label>
+                    <label class="text-white text-center text-4xl font-bold">{{$course}}</label>
+                </div>
+            </div>
+            </div>
+
+
+
+    </div>
+
+
+</body>
+</html>
 
 
 
