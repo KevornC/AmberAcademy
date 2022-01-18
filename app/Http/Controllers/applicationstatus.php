@@ -82,8 +82,8 @@ class applicationstatus extends Controller
     function view_denied_applications()
     {
         $data = DB::table('applications')->where('response', '=', '0')->get()->count();
-
         if($data > 0) {
+            $data = DB::table('applications')->where('response', '=', '0')->get();
             return view('admin.ViewDeniedApplication', ['data' => $data]);
         } else {
             $data = array();

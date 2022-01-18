@@ -22,7 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard','\App\Http\Controllers\HomeController@index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard','\App\Http\Controllers\HomeController@index')->name('dashh');
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile','\App\Http\Controllers\HomeController@index');
 
 //Media & About us &Policy
